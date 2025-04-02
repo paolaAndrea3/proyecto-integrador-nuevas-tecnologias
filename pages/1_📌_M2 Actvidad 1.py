@@ -10,19 +10,16 @@ st.title("Momento 2 - Actividad 1")
 
 st.header("Descripción de la actividad")
 st.markdown("""
-Esta actividad es una introducción práctica a Python y a las estructuras de datos básicas.
-En ella, exploraremos los conceptos fundamentales de Python y aprenderemos a utilizar variables,
-tipos de datos, operadores, y las estructuras de datos más utilizadas como listas, tuplas,
-diccionarios y conjuntos.
+En esta actividad, exploraremos la creación y manipulación de DataFrames en Pandas, utilizando Streamlit para visualizar los datos en una interfaz web. Se trabajará con diferentes fuentes de datos, como diccionarios, listas, archivos CSV, JSON, bases de datos SQLite, entre otros.
 """)
 
 st.header("Objetivos de aprendizaje")
 
 st.markdown("""
-- Comprender los tipos de datos básicos en Python
-- Aprender a utilizar variables y operadores
-- Dominar las estructuras de datos fundamentales
-- Aplicar estos conocimientos en ejemplos prácticos
+- Comprender cómo crear DataFrames a partir de diversas estructuras de datos.
+- Aprender a visualizar DataFrames en una aplicación web con Streamlit.
+- Manejar diferentes fuentes de datos como archivos, bases de datos y APIs.
+- Aplicar estos conocimientos en un entorno interactivo.
 """)
 
 st.header("Solución")
