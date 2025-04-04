@@ -7,6 +7,7 @@ from firebase_admin import credentials, initialize_app, firestore
 import firebase_admin
 import json
 import toml
+import openpyxl
 # Configuración de la página
 st.set_page_config(   
     page_icon="📌",
