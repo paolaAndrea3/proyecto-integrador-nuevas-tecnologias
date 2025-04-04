@@ -246,6 +246,20 @@ st.code(code, language='python')
 
 
 st.title("Actividad 11 - Firebase")
+def attrdict_to_dict(attrdict):
+    """Convierte un objeto AttrDict a un diccionario Python estándar."""
+    return dict(attrdict)
+
+if not firebase_admin._apps:
+    cred_toml = attrdict_to_dict(st.secrets["credentials"])
+    cred_dict = toml.loads(toml.dumps(cred_toml))
+    cred = credentials.Certificate(cred_dict)
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+usuarios_ref = db.collection("usuarios")
+usuarios = usuarios_ref.stream()
+data = []
 st.title("Usuarios de Firestore")
 
 for usuario in usuarios:
@@ -260,6 +274,7 @@ st.dataframe(df_firebase)
 
 
 # Ejemplo: Agregar datos a Firestore
+
 st.title("Agregar Nuevo Usuario")
 
 nombre_nuevo = st.text_input("Nombre:")
