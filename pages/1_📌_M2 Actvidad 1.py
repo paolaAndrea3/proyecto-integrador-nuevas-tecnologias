@@ -1,6 +1,12 @@
+
 import streamlit as st
 import pandas as pd
-
+import sqlite3
+import numpy as np
+from firebase_admin import credentials, initialize_app, firestore
+import firebase_admin
+import json
+import toml
 # Configuración de la página
 st.set_page_config(   
     page_icon="📌",
@@ -137,3 +143,132 @@ st.write("Datos de Personas")
 st.dataframe(df_personas)
 """
 st.code(code, language='python')
+
+st.title("Actividad 5 - Archivo CSV")
+
+df_csv = pd.read_csv("data.csv")
+st.write("Datos desde CSV")
+st.dataframe(df_csv)
+st.write("Código que genera el Archivo CSV")
+Code = """
+df_csv = pd.read_csv("data.csv")
+st.write("Datos desde CSV")
+st.dataframe(df_csv)
+""""" 
+st.code(code, language='python')
+
+st.title("Actividad 6 - Archivo Excel")
+df_excel = pd.read_excel("data.xlsx")
+st.write("Datos desde Excel")
+st.dataframe(df_excel)
+st.write("Código que genera el Archivo Excel")
+code = """
+df_excel = pd.read_excel("data.xlsx")
+st.write("Datos desde Excel")
+st.dataframe(df_excel)
+"""
+st.code(code, language='python')
+
+st.title("Actividad 7 - Archivo JSON")
+#creas un archivo llamado data.json y lo llamas con el suiguiente código
+df_json = pd.read_json("data.json")
+st.write("Datos de Usuarios desde JSON")
+st.dataframe(df_json)
+st.write("Código que genera el Archivo JSON")
+code = """
+#creas un archivo llamado data.json y lo llamas con el suiguiente código
+df_json = pd.read_json("data.json")
+st.write("Datos de Usuarios desde JSON")
+st.dataframe(df_json)
+"""
+st.code(code, language='python')
+
+
+st.title("Actividad 8 - URL")
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"  # URL real de un archivo CSV
+df_url = pd.read_csv(url)
+st.dataframe(df_url)
+
+st.header("Solución")
+code="""
+url = "https://raw.githubusercontent.com/datasciencedojo/datasets/master/titanic.csv"  # URL real de un archivo CSV
+df_url = pd.read_csv(url)
+st.dataframe(df_url)
+"""
+st.code(code, language='python')
+
+st.title("Actividad 9 -Base de datos SQLite")
+
+conn = sqlite3.connect("Estudiantes.db")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS estudiantes (nombre TEXT, calificacion INTEGER)")
+conn.commit()
+df_sqlite = pd.read_sql_query("SELECT * FROM Estudiantes", conn)
+st.dataframe(df_sqlite)
+conn.close()
+st.write("Código que genera la Base de datos SQLite")
+code = """
+import sqlite3  # Importar SQLite para trabajar con bases de datos
+
+conn = sqlite3.connect("estudiantes.db")
+cursor = conn.cursor()
+cursor.execute("CREATE TABLE IF NOT EXISTS estudiantes (nombre TEXT, calificacion INTEGER)")
+cursor.execute("INSERT INTO estudiantes VALUES ('Tatiana', 4.5), ('Sebastian', 5), ('Marta', 3)")
+conn.commit()
+df_sqlite = pd.read_sql_query("SELECT * FROM estudiantes", conn)
+st.dataframe(df_sqlite)
+conn.close()
+"""
+st.code(code, language='python')
+
+st.title("Actividad 10 - Array de NumPy")
+array_numpy = np.array([
+    [1, "Manzana", 2600],
+    [2, "Pantalones", 45000],
+    [3, "Galletas", 134]
+])
+df_numpy = pd.DataFrame(array_numpy, columns=["ID", "Producto", "Precio"])
+st.write("Datos desde NumPy")
+st.dataframe(df_numpy)
+code = """
+import numpy as np  # Importar NumPy para trabajar con arreglos
+
+array_numpy = np.array([
+    [1, "Manzana", 2600],
+    [2, "Pantalones", 45000],
+    [3, "Galletas", 134]
+])
+df_numpy = pd.DataFrame(array_numpy, columns=["ID", "Producto", "Precio"])
+st.write("Datos desde NumPy")
+st.dataframe(df_numpy)" \
+"""
+st.code(code, language='python')
+
+
+st.title("Actividad 11 - Firebase")
+st.title("Usuarios de Firestore")
+
+for usuario in usuarios:
+    usuario_dict = usuario.to_dict()
+    if "nombre" in usuario_dict and "edad" in usuario_dict: # Example of data validation.
+        usuario_dict["ID"] = usuario.id
+        data.append(usuario_dict)
+
+df_firebase = pd.DataFrame(data)
+st.write("Datos desde Firebase")
+st.dataframe(df_firebase)
+
+
+# Ejemplo: Agregar datos a Firestore
+st.title("Agregar Nuevo Usuario")
+
+nombre_nuevo = st.text_input("Nombre:")
+edad_nueva = st.number_input("Edad:", min_value=0, step=1)
+
+if st.button("Agregar Usuario"):
+    if nombre_nuevo and edad_nueva >= 0:
+        nuevo_usuario = {"nombre": nombre_nuevo, "edad": edad_nueva}
+        db.collection("usuarios").add(nuevo_usuario)
+        st.success("Usuario agregado correctamente.")
+    else:
+        st.warning("Por favor, ingresa un nombre y una edad válida.")
