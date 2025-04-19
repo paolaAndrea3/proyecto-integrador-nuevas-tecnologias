@@ -11,19 +11,21 @@ st.title("Momento 2 - Actividad 2")
 
 st.header("Descripción de la actividad")
 st.markdown("""
-Esta actividad es una introducción práctica a Python y a las estructuras de datos básicas.
-En ella, exploraremos los conceptos fundamentales de Python y aprenderemos a utilizar variables,
-tipos de datos, operadores, y las estructuras de datos más utilizadas como listas, tuplas,
-diccionarios y conjuntos.
+Esta actividad tiene como objetivo introducir a los estudiantes en el análisis y visualización de datos utilizando Python, las 
+bibliotecas Pandas y Streamlit. A través de la carga y manipulación de un conjunto de datos de estudiantes colombianos.
+
 """)
 
 st.header("Objetivos de aprendizaje")
 
 st.markdown("""
-- Comprender los tipos de datos básicos en Python
-- Aprender a utilizar variables y operadores
-- Dominar las estructuras de datos fundamentales
-- Aplicar estos conocimientos en ejemplos prácticos
+- Comprender cómo cargar y visualizar datos en Python utilizando Pandas y Streamlit.
+
+- Aplicar métodos de Pandas para explorar y resumir conjuntos de datos.
+
+- Implementar filtros interactivos en una aplicación web para analizar datos según criterios específicos.
+
+- Desarrollar habilidades en la creación de aplicaciones web interactivas para la visualización de datos.
 """)
 
 st.header("Solución")
