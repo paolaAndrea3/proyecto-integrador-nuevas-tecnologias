@@ -19,13 +19,13 @@ bibliotecas Pandas y Streamlit. A través de la carga y manipulación de un conj
 st.header("Objetivos de aprendizaje")
 
 st.markdown("""
-- Comprender cómo cargar y visualizar datos en Python utilizando Pandas y Streamlit.
+-Cargar y visualizar datos desde archivos CSV.
 
-- Aplicar métodos de Pandas para explorar y resumir conjuntos de datos.
+-Explorar y resumir datos utilizando métodos como .head(), .tail(), .info() y .describe().
 
-- Implementar filtros interactivos en una aplicación web para analizar datos según criterios específicos.
+-Seleccionar y filtrar columnas específicas del DataFrame.
 
-- Desarrollar habilidades en la creación de aplicaciones web interactivas para la visualización de datos.
+-Aplicar filtros interactivos basados en criterios definidos por el usuario, como el promedio de calificaciones.
 """)
 
 st.header("Solución")
