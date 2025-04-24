@@ -1,5 +1,9 @@
 import streamlit as st
-
+# Importar bibliotecas
+import pandas as pd
+import numpy as np
+from faker import Faker
+import random
 # Configuración de la página
 st.set_page_config(   
     page_icon="📌",
@@ -27,3 +31,7 @@ st.markdown("""
 
 st.header("Solución")
 
+
+st.subheader("Actividad 1: Practica de filtrado en Pandas (Google Colab)")   
+
+st.link_button("Google Colab", "https://colab.research.google.com/drive/1T0VhaE8ZMRShSYLbfAlMxFEz3-PrQZwl?usp=sharing")
