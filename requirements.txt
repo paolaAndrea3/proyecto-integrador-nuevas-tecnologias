@@ -38,3 +38,4 @@ urllib3==2.3.0
 watchdog==6.0.0
 firebase_admin
 openpyxl
+Faker==25.5.0
